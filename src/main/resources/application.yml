@@ -8,3 +8,8 @@ spring:
     username: test
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
+  shiro:
+    timeout: 18000
+
+mybatis:
+

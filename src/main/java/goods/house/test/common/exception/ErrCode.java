@@ -1,4 +1,4 @@
-package goods.house.test.common;
+package goods.house.test.common.exception;
 
 /**
  * @Auther: lvlj
