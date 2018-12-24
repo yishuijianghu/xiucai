@@ -84,10 +84,10 @@ var vm = new Vue({
             layer.open({
                 type: 2,
                 title: false,
-                area: ['806px', '467px'],
+                area: ['360px', '340px'],
                 closeBtn: 1,
                 shadeClose: false,
-                content: ['emay://cdn.renren.io/donate.jpg', 'no']
+                content: ['http://xiucai-bucket.oss-cn-qingdao.aliyuncs.com/weixin.png', 'no']
             });
         }
 	},
