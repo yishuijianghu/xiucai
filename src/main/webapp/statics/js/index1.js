@@ -170,7 +170,7 @@ var vm = new Vue({
             layer.open({
                 type: 2,
                 title: false,
-                area: ['360px', '340px'],
+                area: ['340px', '360px'],
                 closeBtn: 1,
                 shadeClose: false,
                 content: ['http://xiucai-bucket.oss-cn-qingdao.aliyuncs.com/weixin.png', 'no']
