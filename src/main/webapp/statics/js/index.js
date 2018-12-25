@@ -89,6 +89,24 @@ var vm = new Vue({
                 shadeClose: false,
                 content: ['http://xiucai-bucket.oss-cn-qingdao.aliyuncs.com/weixin.png', 'no']
             });
+        },
+		welcome:function () {
+            layer.open({
+                content: '感谢您光临秀才小舍！',
+                btn: ['确认', '取消'],
+                yes: function(index, layero) {
+                    window.location.href='../modules/client/welcom.html';
+                },
+                btn2: function(index, layero) {
+
+                }
+                ,
+                cancel: function() {
+                    //右上角关闭回调
+
+                }
+            });
+
         }
 	},
 	created: function(){
