@@ -7,6 +7,8 @@ package goods.house.test.common;
  */
 public enum YiShuiError {
 
+    SYS_SUCCESS(666,"SUCCESS"),
+
     SYS_ERROR(1001,"系统错误");
     private Integer code;
     private String msg;

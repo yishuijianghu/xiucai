@@ -1,5 +1,6 @@
 package goods.house.test.domain.controller;
 
+import goods.house.test.common.exception.RRException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,10 @@ public class UserController {
     public Map<String,Object> test(){
         Map<String,Object> result = new HashMap<>();
         result.put("result","hello,xicai ~~~~~~~~~~!");
+
         return result;
     }
+
+
 
 }
