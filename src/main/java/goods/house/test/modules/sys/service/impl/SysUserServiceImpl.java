@@ -108,4 +108,10 @@ public class SysUserServiceImpl implements SysUserService {
 		return sysUserDao.updatePassword(map);
 	}
 
+	@Override
+	public int checkUsername(String username) {
+		int count = sysUserDao.checkUsername(username);
+		return count;
+	}
+
 }

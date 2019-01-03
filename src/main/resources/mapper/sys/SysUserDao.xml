@@ -116,5 +116,8 @@
 			#{userId}
 		</foreach>
 	</delete>
+	<select id="checkUsername" resultType="java.lang.Integer">
+		SELECT count(1) FROM sys_user WHERE username = #{username}
+	</select>
 
 </mapper>

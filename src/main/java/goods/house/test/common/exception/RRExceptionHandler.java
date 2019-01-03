@@ -1,5 +1,6 @@
 package goods.house.test.common.exception;
 
+import goods.house.test.common.YiShuiError;
 import goods.house.test.common.utils.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ public class RRExceptionHandler {
 
 		return r;
 	}
+
 	/**
 	 *处理参数类型匹配错误
 	 *@author yanglizhong

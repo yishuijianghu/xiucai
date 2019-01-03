@@ -2,6 +2,7 @@ package goods.house.test.modules.sys.dao;
 
 import goods.house.test.modules.sys.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -36,4 +37,9 @@ public interface SysUserDao extends BaseDao<SysUserEntity> {
 	 * 修改密码
 	 */
 	int updatePassword(Map<String, Object> map);
+
+	/**
+	 * 检查用户名是否重复
+	 * */
+    int checkUsername( String username);
 }
