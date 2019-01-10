@@ -30,7 +30,7 @@ public class LoginFormAuthenticationFilter extends FormAuthenticationFilter {
         Subject subject = getSubject(request, response);
         String url = WebUtils.getPathWithinApplication(httpRequest);
         if (subject.getPrincipal() == null) {
-            if (url.contains("index.html")) {
+            if (url.contains("index.html")||url.contains("/")) {
                 saveRequestAndRedirectToLogin(request, response);
             } else {
                 httpResponse.setCharacterEncoding("UTF-8");
