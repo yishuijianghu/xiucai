@@ -82,7 +82,30 @@ public class SysLoginController {
 	    
 		return R.ok();
 	}
-	
+
+	/**
+	 * 访问客户登录
+	 */
+	@ResponseBody
+	@RequestMapping(value = "sys/customerLogin", method = RequestMethod.POST)
+	public R customerLogin(String username, String password, String captcha)throws IOException {
+		try{
+			Subject subject = ShiroUtils.getSubject();
+			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+			subject.login(token);
+		}catch (UnknownAccountException e) {
+			return R.error(e.getMessage());
+		}catch (IncorrectCredentialsException e) {
+			return R.error("账号或密码不正确");
+		}catch (LockedAccountException e) {
+			return R.error("账号已被锁定,请联系管理员");
+		}catch (AuthenticationException e) {
+			return R.error("账户验证失败");
+		}
+
+		return R.ok();
+	}
+
 	/**
 	 * 退出
 	 */
