@@ -1,7 +1,6 @@
 package goods.house.test.domain.controller.client;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import goods.house.test.common.utils.RestResult;
 import goods.house.test.domain.controller.vo.RegisterRequest;
 import goods.house.test.modules.sys.entity.SysUserEntity;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
