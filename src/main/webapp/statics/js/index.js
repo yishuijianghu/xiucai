@@ -92,7 +92,7 @@ var vm = new Vue({
         },
 		welcome:function () {
             layer.open({
-                content: '感谢您光临秀才小舍！',
+                content: '老铁，去秀才小舍逛逛！',
                 btn: ['确认', '取消'],
                 yes: function(index, layero) {
                     window.location.href='../modules/client/welcom.html';

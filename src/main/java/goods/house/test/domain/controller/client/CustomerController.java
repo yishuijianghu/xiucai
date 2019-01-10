@@ -1,14 +1,19 @@
 package goods.house.test.domain.controller.client;
 
 import com.google.common.collect.Lists;
+import goods.house.test.common.utils.R;
 import goods.house.test.common.utils.RestResult;
 import goods.house.test.domain.controller.vo.RegisterRequest;
 import goods.house.test.modules.sys.entity.SysUserEntity;
 import goods.house.test.modules.sys.service.SysUserService;
+import goods.house.test.modules.sys.shiro.ShiroUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -53,4 +58,26 @@ public class CustomerController {
         return RestResult.OK();
     }
 
+    /**
+     * 访问客户登录
+     */
+    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public R login(String username, String password, String captcha)throws IOException {
+        try{
+            Subject subject = ShiroUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            subject.login(token);
+        }catch (UnknownAccountException e) {
+            return R.error(e.getMessage());
+        }catch (IncorrectCredentialsException e) {
+            return R.error("账号或密码不正确");
+        }catch (LockedAccountException e) {
+            return R.error("账号已被锁定,请联系管理员");
+        }catch (AuthenticationException e) {
+            return R.error("账户验证失败");
+        }
+
+        return R.ok();
+    }
 }

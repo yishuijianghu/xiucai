@@ -4,6 +4,8 @@ package goods.house.test.modules.sys.controller;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import goods.house.test.common.utils.R;
+import goods.house.test.modules.sys.entity.SysUserEntity;
+import goods.house.test.modules.sys.service.SysUserService;
 import goods.house.test.modules.sys.shiro.ShiroUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -31,6 +33,9 @@ import java.io.IOException;
 public class SysLoginController {
 	@Autowired
 	private Producer producer;
+
+	@Autowired
+	private SysUserService userService;
 	
 	@RequestMapping("captcha.jpg")
 	public void captcha(HttpServletResponse response)throws ServletException, IOException {
@@ -56,6 +61,13 @@ public class SysLoginController {
 	public R login(String username, String password, String captcha)throws IOException {
 		try{
 			Subject subject = ShiroUtils.getSubject();
+			SysUserEntity user = userService.queryByUserName(username);
+			if(user==null){
+				return R.error("账号不正确");
+			}
+			if(user.getDeptId()!=4){
+				return R.error("无权访问");
+			}
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			subject.login(token);
 		}catch (UnknownAccountException e) {
