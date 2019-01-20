@@ -7,6 +7,7 @@ import goods.house.test.domain.controller.vo.RegisterRequest;
 import goods.house.test.modules.sys.entity.SysUserEntity;
 import goods.house.test.modules.sys.service.SysUserService;
 import goods.house.test.modules.sys.shiro.ShiroUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.UUID;
  */
 @RequestMapping("customer")
 @Controller
+@Slf4j
 public class CustomerController {
 
     @Autowired
@@ -55,6 +57,13 @@ public class CustomerController {
         userEntity.setStatus(1);
 
         sysUserService.save(userEntity);
+        return RestResult.OK();
+    }
+
+    @ResponseBody
+    @RequestMapping("/submitInfo")
+    public RestResult submit(@RequestBody SubmitInfoRequest request){
+        log.info("接受到联系的请求，名字："+request.getName()+",电话："+request.getNumber());
         return RestResult.OK();
     }
 
