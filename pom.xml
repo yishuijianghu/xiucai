@@ -307,14 +307,7 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.14</version>
-				<!--<executions>-->
-				<!--<execution>-->
-				<!--<phase>package</phase>-->
-				<!--<goals>-->
-				<!--<goal>build</goal>-->
-				<!--</goals>-->
-				<!--</execution>-->
-				<!--</executions>-->
+
 				<configuration>
 					<imageName>renren/security</imageName>
 					<dockerDirectory>${project.basedir}</dockerDirectory>
@@ -328,6 +321,24 @@
 				</configuration>
 				<!-- 运行命令 mvn clean package docker:build 打包并生成docker镜像 -->
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>
+						-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+					</jvmArguments>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 		<resources>
 
